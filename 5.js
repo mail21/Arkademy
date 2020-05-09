@@ -1,7 +1,8 @@
 function createTriangle(a,b){
   if(!(a<=b)){
     return "Nilai A harus lebih besar"
-  }
+  } 
+  
   let bagi = b/a
   let print="";
   for (let i = 1; i <= bagi; i++) {
