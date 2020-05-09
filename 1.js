@@ -1,5 +1,5 @@
 const biodata = (nama="Ismail",umur = 20) => {
-  const bio = [{
+  const bio = {
     name : nama,
     age : umur,
     address : "JL.Musholla Annur no 86 Kedaung Pamulang",
@@ -38,7 +38,7 @@ const biodata = (nama="Ismail",umur = 20) => {
       },
     ],
     interest_in_coding : true
-  }];
+  };
 
   return JSON.stringify(bio)
 }
