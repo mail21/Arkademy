@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>App</title>
+   <!-- Bootstrap core CSS -->
+   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="stylesheet" href="/vendor/style/style.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg  nav">
+    <div>
+      <a class="navbar-brand" href="#"><img src="/img/arkademyLogo.png" alt="arkademy" width="90"></a>
+    </div>
+  
+    <div class="collapse navbar-collapse flex-nowrap" id="navbarTogglerDemo02">
+        <input class="form-control mr-4" type="search" placeholder="Search">
+    </div>
+    <div>
+      <button class="btn btn-lg my-2 my-sm-0 colorKrem" data-toggle="modal" data-target="#ModalTambah" type="submit">ADD</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead class="colorKrem">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Cashie</th>
+            <th scope="col">Product</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let i = 1; %>
+          <% dataTabel.forEach((data)=>{ %>
+          <tr>
+            <th scope="row"><%= i++ %></th>
+            <td><%= data.cashier %></td>
+            <td><%= data.product %></td>
+            <td><%= data.category %></td>
+            <td><%= data.price %></td>
+            <td>
+              <a data-toggle="modal" data-target="#ModalEdit"><img width="40" src="/img/editicon.png" alt=""></a>
+              <a data-toggle="modal" data-target="#ModalDelete" href=""><img width="40" src="/img/trashIcon.png" alt=""></a>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+
+
+
+<!-- Modal EDIT-->
+<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">EDIT</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+          <select class="browser-default custom-select mb-3">
+            <% let k = 1; %>
+            <% dataTabel.forEach((data)=>{ %>
+            <option value="<%= k++ %>"><%= data.cashier %>
+            <% }) %>
+          </select>
+
+          <select class="browser-default custom-select mb-3">
+            <option value="1">Drink</option>
+            <option value="2">Food</option>
+          </select>
+
+            <div class="form-group">
+              <input type="text" class="form-control mb-3" id="formGroupExampleInput" placeholder="Ice Tea">
+              <input type="text" class="form-control mb-3" id="formGroupExampleInput2" placeholder="Rp. 10.000">
+            </div>
+            <button type="button" name="edit" class="btn btn-lg colorKrem">EDIT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal EDIT-->
+
+<!-- Modal Tambah-->
+<div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/add" method="POST">
+          <select class="browser-default custom-select mb-3" name="cashier">
+            <% let j = 1; %>
+            <% dataTabel.forEach((data)=>{ %>
+            <option value="<%= j++ %>"><%= data.cashier %>
+            <% }) %>
+          </select>
+
+          <select class="browser-default custom-select mb-3" name="category">
+            <option value="1">Drink</option>
+            <option value="2">Food</option>
+          </select>
+
+            <div class="form-group">
+              <input type="text" name="namaMakanan" class="form-control mb-3" id="formGroupExampleInput" placeholder="Ice Tea">
+              <input type="text" name="harga" class="form-control mb-3" id="formGroupExampleInput2" placeholder="Rp. 10.000">
+            </div>
+
+            <button type="submit" name="addBtn" class="btn btn-lg colorKrem">ADD</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Tambah-->
+
+<!-- Modal Delete-->
+<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Data Raisa Andriani 1</h2>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="pesan">
+            <img src="/img/checklist.png"  width="300" alt="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <h2>Berhasil dihapus</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Delete-->
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>

@@ -1,4 +1,4 @@
-const biodata = (nama="Ismail",umur = 20) => {
+function biodata(nama="Ismail",umur = 20){
   const bio = {
     name : nama,
     age : umur,

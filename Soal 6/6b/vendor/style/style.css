@@ -1,0 +1,14 @@
+.nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+.colorKrem{
+    background-color: #fcdc9c;
+}
+
+.pesan{
+    margin: auto;
+}
+
+

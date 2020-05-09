@@ -9,3 +9,6 @@ function isPasswordValid(password){
     return true
   }
 }
+
+isUsernameValid("user_resu")
+isPasswordValid("iamuser1!")
